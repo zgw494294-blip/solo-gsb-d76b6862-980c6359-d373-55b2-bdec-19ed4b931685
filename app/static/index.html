@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABO 家系推演台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>ABO 家系推演台</h1>
+    <p class="subtitle">录入家系成员与血型，联立整张家系的遗传约束，推演每人可能的基因型与血型。</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>① 编辑家系</h2>
+        <div class="toolbar">
+          <button id="btn-add" type="button">＋ 添加成员</button>
+          <button id="btn-example" type="button">载入示例</button>
+          <button id="btn-clear" type="button">清空</button>
+        </div>
+      </div>
+      <p class="hint">
+        共 <span id="member-count">0</span> 名成员（2～18 名，ID 唯一）。
+        血型可选 A / B / AB / O / 未知；有父母记录的成员须填写两名不同且已录入的父母，亲子关系不得成环。
+      </p>
+      <div class="table-wrap">
+        <table id="member-table">
+          <thead>
+            <tr>
+              <th>#</th><th>ID</th><th>血型</th><th>父亲 ID</th><th>母亲 ID</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="member-tbody"></tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <button id="btn-solve" type="button" class="primary">② 开始推演</button>
+        <span id="form-error" class="error-text"></span>
+      </div>
+    </section>
+
+    <section class="panel" id="result-panel" hidden>
+      <div class="panel-head"><h2>③ 推演结果</h2></div>
+      <div id="result-status"></div>
+      <div id="result-body"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>等位基因仅 A、B、O：A 型 = AA/AO，B 型 = BB/BO，AB 型 = AB，O 型 = OO；孩子从双亲各继承一个等位基因。</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
