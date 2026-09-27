@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABO 家系推演台</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🧬 ABO 家系推演台</h1>
+  <p class="subtitle">录入家系成员与血型，联立求解全家相容的基因型分配（A / B / O 等位基因，A、B 共显性）。</p>
+</header>
+
+<main>
+  <section class="card">
+    <div class="card-head">
+      <h2>① 编辑家系</h2>
+      <span class="muted" id="member-count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="grid" id="member-table">
+        <thead>
+          <tr>
+            <th class="col-no">#</th>
+            <th>成员 ID</th>
+            <th>血型</th>
+            <th>父母 ①</th>
+            <th>父母 ②</th>
+            <th class="col-del"></th>
+          </tr>
+        </thead>
+        <tbody id="member-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="toolbar">
+      <button id="btn-add" type="button">＋ 添加成员</button>
+      <button id="btn-sample" type="button">载入示例（有解）</button>
+      <button id="btn-sample-unsat" type="button">载入示例（无解）</button>
+      <button id="btn-clear" type="button">清空</button>
+      <span class="spacer"></span>
+      <button id="btn-solve" type="button" class="primary">▶ 开始推演</button>
+    </div>
+    <p class="hint">
+      规则：2～18 名成员，ID 唯一；血型可选 A / B / AB / O / 未知；父母两栏须同时填写或同时留空，
+      且必须已录入、互不相同，亲子关系不得成环。孩子从双亲各继承一个等位基因（A 型＝AA/AO，B 型＝BB/BO，AB＝AB，O＝OO）。
+    </p>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>② 推演结果</h2>
+    </div>
+    <div id="result-box">
+      <p class="muted">尚未推演。编辑家系后点击「开始推演」。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="muted">纯本地离线运行 · FastAPI + OR-Tools CP-SAT · 页面无外部依赖，数据不离开本机</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

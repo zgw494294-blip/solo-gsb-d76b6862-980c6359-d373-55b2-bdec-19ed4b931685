@@ -1,0 +1,8 @@
+services:
+  abo-pedigree:
+    build: .
+    image: abo-pedigree:latest
+    container_name: abo-pedigree
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
